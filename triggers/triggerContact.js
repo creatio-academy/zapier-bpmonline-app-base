@@ -10,8 +10,10 @@ const triggerContact = (z, bundle) => {
                 // Got error with "Id" fields. Have to rename them.
                 // see https://zapier.com/developer/documentation/v2/app-checks-reference/#ZDE009
                 results = results.map(function(contact){
-                    contact.id = contact.Id
-                    delete contact.Id
+                    contact.id = contact.Id;
+                    delete contact.Id;
+                    // todo: think about __metadata
+                    delete contact.__metadata;
                     return contact
                   });
                   z.console.log("triggerContact results");
@@ -25,7 +27,7 @@ module.exports = {
     noun: 'Contact',
 
     display: {
-        label: 'Get Contact',
+        label: 'Get Contacts',
         description: 'Triggers on a new contact.'
     },
 

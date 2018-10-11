@@ -1,15 +1,13 @@
 const should = require('should');
-
 const zapier = require('zapier-platform-core');
-
 const App = require('../index');
-const appTester = zapier.createAppTester(App);
 const bundle = require('./authcommon');
+
+const appTester = zapier.createAppTester(App);
 
 describe('basic auth app', () => {
 
-  it('automatically has Authorize Header add', (done) => {
-    // Try changing the values of username or password to see how the test method behaves
+  it('Has Authorization header', (done) => {
 
     appTester(App.authentication.test, bundle)
       .then((response) => {
@@ -23,7 +21,6 @@ describe('basic auth app', () => {
   });
 
   it('fails on bad auth', (done) => {
-    // Try changing the values of username or password to see how the test method behaves
     const bundleLocal = {
       authData: {
         username: 'user',
