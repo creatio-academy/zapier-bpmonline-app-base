@@ -2,6 +2,7 @@
 const authentication = require('./authentication');
 const contactTrigger = require ('./triggers/triggerContact');
 const contactCreate = require('./creates/createContact');
+const contactSearch = require('./searches/searchContact');
 
 const addAuthorizationToHeader = (request, z, bundle) => {
   // TODO: Read session cookie, add useForceSession header
@@ -42,6 +43,7 @@ const App = {
 
   // If you want your searches to show up, you better include it here!
   searches: {
+    [contactSearch.key]: contactSearch,
   },
 
   // If you want your creates to show up, you better include it here!

@@ -1,12 +1,12 @@
 const sample = require("../samples/sampleContact");
-const triggerContact = (z, bundle) => {
+const findContact = (z, bundle) => {
     const responsePromise = z.request({
         method: 'GET',
         // todo: sort in reverse-chronological order to make sure new/updated items can be found on the first page of results
         // see https://zapier.com/developer/documentation/v2/deduplication/
-        url: '{{bundle.authData.bpmonlineurl}}/0/ServiceModel/EntityDataService.svc/ContactCollection?'+
-        '$select=Id,Name,CreatedOn'+
-        '&$orderby=CreatedOn desc',
+        url: "{{bundle.authData.bpmonlineurl}}/0/ServiceModel/EntityDataService.svc/ContactCollection?" + 
+        "$select=Id,Name,CreatedOn"+
+        "&$filter=Name eq '{{bundle.inputData.contactName}}'",
     });
     return responsePromise
         .then(
@@ -21,7 +21,7 @@ const triggerContact = (z, bundle) => {
                     delete contact.__metadata;
                     return contact
                   });
-                  z.console.log("triggerContact results");
+                  z.console.log("findContact results");
                   z.console.log(results);
                 return results;
             });
@@ -32,17 +32,27 @@ module.exports = {
     noun: 'Contact',
 
     display: {
-        label: 'Get Contacts',
-        description: 'Triggers on a new contact.'
+        label: 'Find a Contact',
+        description: 'Search for contact by name.'
     },
-
     operation: {
         inputFields: [
-            { key: 'filter', required: false, label: 'Filter', choices: { all: 'all' }, helpText: 'Default is "all"' }
+          {
+            key: 'contactName',
+            type: 'string',
+            label: 'Contact name',
+            helpText: "Full name of the contact in the bpm'online."
+          }
         ],
-        perform: triggerContact,
-
-        // todo: contact example
-        sample: sample
-    }
-};
+    
+        perform: findContact,
+    
+        sample: sample,
+    
+        outputFields: [
+          {key: 'id', label: 'ID'},
+          //{key: 'createdAt', label: 'Created At'},
+          {key: 'Name', label: 'Name'},
+        ]
+      }
+}
