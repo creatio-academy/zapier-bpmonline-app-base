@@ -13,8 +13,8 @@ const addAuthorizationToHeader = (request, z, bundle) => {
   request.headers['Accept'] = 'application/json;odata=verbose';
   const basicHash = Buffer(`${bundle.authData.username}:${bundle.authData.password}`).toString('base64');
   request.headers.Authorization = `Basic ${basicHash}`;
-  z.console.log('request.headers.Authorization');
-  z.console.log(request.headers.Authorization);
+  // z.console.log('request.headers.Authorization');
+  // z.console.log(request.headers.Authorization);
   return request;
 };
 

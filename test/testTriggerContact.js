@@ -16,9 +16,12 @@ describe("contact trigger", () => {
       .then((contacts) => {
         should(contacts).be.instanceof(Array);
         should(contacts.length).be.above(0);
+        //todl: check contacts accounts and addresses
         done();
       })
       .catch(done);
   });
+
+  
 
 });

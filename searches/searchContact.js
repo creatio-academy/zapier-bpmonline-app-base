@@ -21,8 +21,8 @@ const findContact = (z, bundle) => {
                     delete contact.__metadata;
                     return contact
                   });
-                  z.console.log("findContact results");
-                  z.console.log(results);
+                  //z.console.log("findContact results");
+                  //z.console.log(results);
                 return results;
             });
 };
