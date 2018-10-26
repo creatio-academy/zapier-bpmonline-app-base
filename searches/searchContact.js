@@ -32,7 +32,7 @@ module.exports = {
     noun: 'Contact',
 
     display: {
-        label: 'Find a Contact',
+        label: 'Find Contact',
         description: 'Search for contact by name.'
     },
     operation: {

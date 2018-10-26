@@ -5,8 +5,14 @@ const zapier = require('zapier-platform-core');
 
 const appTester = zapier.createAppTester(App);
 
+
+
 describe("contact trigger", () => {
-  it('should get contacts array', (done) => {
+  
+  it('should get contacts array', function(done){
+    // important!!! test may fall with time restriction.
+    // change it to greater value
+    this.timeout(5000);
 
     const localBundle = { ...bundle };
     localBundle.inputData = {

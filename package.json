@@ -1,13 +1,15 @@
 {
-  "name": "zapier-platform-example-app-basic-auth",
+  "name": "zapier-bpmonline",
   "version": "1.0.0",
-  "description": "An example app for the Zapier platform.",
-  "repository": "zapier/zapier-platform-example-app-basic-auth",
-  "homepage": "https://zapier.com/",
-  "author": "Bryan Helmig <bryan@zapier.com>",
+  "description": "An application to integrate Zapier and bpm'online.",
+  "repository": "https://github.com/simutaroman/zapier-bpmonline-app-base",
+  "homepage": "https://www.bpmonline.com/",
+  "author": "Roman Simuta <simutaroman@gmail.com>",
   "license": "BSD-3-Clause",
   "main": "index.js",
   "scripts": {
+    "test2": "mocha test/testTriggerContact.js",
+    "test1": "mocha test/testCreateContact.js",
     "test": "mocha --recursive"
   },
   "engines": {

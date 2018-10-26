@@ -1,9 +1,12 @@
 const sample = require("../samples/sampleContact");
 const fs = require("fs");
+const utils = require("../utils/Utilities");
 
-const saveToJson = (object, filename) => {
+async function saveToJson (object, filename) {
     const json = JSON.stringify(object, null, 2);
-    fs.writeFile(filename, json, "utf-8");
+    await fs.writeFile(filename, json, "utf-8",(err)=>{
+        if (err) console.log(err);
+    });
 }
 
 const getContactAddressesByType = (z, bundle, contactId, addressTypeId) => {
@@ -26,7 +29,8 @@ const getContactAddressesByType = (z, bundle, contactId, addressTypeId) => {
         .then(
             response => {
                 let results = JSON.parse(response.content).d.results;
-                let result = {};
+                // todo: make dummy address object
+                let result =utils. dummyAddress;
                 if (results.length > 0) {
                     result = results[0];
                     // todo: think about __metadata
@@ -45,7 +49,7 @@ const getContactAddressesByType = (z, bundle, contactId, addressTypeId) => {
 const getContacts = (z, bundle) => {
 
     const url = '{{bundle.authData.bpmonlineurl}}/0/ServiceModel/EntityDataService.svc/ContactCollection?' +
-        '$select=Id,CreatedOn,Name,JobTitle,MobilePhone,Phone,Email,Notes,Account/Id,Account/Name,Account/Type/Id,Account/Type/Name' +
+        '$select=Id,CreatedOn,Name,Surname,GivenName,MiddleName,JobTitle,MobilePhone,Phone,Email,Notes,Account/Id,Account/Name,Account/Type/Id,Account/Type/Name' +
         '&$orderby=CreatedOn desc' +
         "&$expand=Account,Account/Type";
     const promise = z.request({
@@ -84,7 +88,7 @@ async function triggerContact(z, bundle) {
         let address =  await getContactAddressesByType(z, bundle, contacts[i].id, addressTypeId);
         contacts[i].BusinessAddress = address;
     }
-    // saveToJson(contacts, "c:\\sample.json");
+    await saveToJson(contacts, "c:\\sample.json");
     return contacts;
 };
 
@@ -93,7 +97,7 @@ module.exports = {
     noun: 'Contact',
 
     display: {
-        label: 'Get new contact',
+        label: 'Get New Contact',
         description: 'Triggers on a contact creation.'
     },
 

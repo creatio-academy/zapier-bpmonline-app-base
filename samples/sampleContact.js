@@ -1,44 +1,47 @@
 module.exports = {
-    "Account": {
-      "Type": {
-        "Id": "57412fad-53e6-df11-971b-001d60e938c6",
-        "Name": "Our company"
-      },
-      "Id": "e308b781-3c5b-4ecb-89ef-5c1ed4da488e",
-      "Name": "Our company"
+  "id": "3a1fa718-08e4-4c36-9cce-1b6c982c4e73",
+  "CreatedOn": "2018-10-26T09:13:30.142",
+  "Name": "Roman Ruslanovych Simuta",
+  "Surname": "Simuta",
+  "GivenName": "Roman",
+  "MiddleName": "Ruslanovych",
+  "JobTitle": "SDK Developer",
+  "MobilePhone": "+380667212092",
+  "Phone": "+380443633133",
+  "Email": "simutaroman@gmail.com",
+  "Notes": "",
+  "Account": {
+    "Type": {
+      "Id": "f2c0ce97-53e6-df11-971b-001d60e938c6",
+      "Name": "Partner"
     },
-    "Name": "Supervisor",
-    "CreatedOn": "2008-10-27T19:05:10",
-    "JobTitle": "",
-    "Phone": "",
-    "MobilePhone": "",
-    "Email": "",
-    "Notes": "",
-    "id": "410006e1-ca4e-4502-a9ec-e54d922d2c00",
-    "BusinessAddress": {
-      "AddressType": {
-        "Id": "fb7a3f6a-f36b-1410-6f81-1c6f65e50343",
-        "Name": "Business"
-      },
-      "Country": {
-        "Id": "e0be1264-f36b-1410-fa98-00155d043204",
-        "Name": "United States"
-      },
-      "Region": {
-        "Id": "658acfe7-09ae-4747-b1b3-541e2dfa1b9e",
-        "Name": "Massachusetts"
-      },
-      "City": {
-        "Id": "74144617-a288-4984-bcac-e78733277a61",
-        "Name": "Boston"
-      },
-      "Contact": {
-        "Id": "410006e1-ca4e-4502-a9ec-e54d922d2c00",
-        "Name": "Supervisor"
-      },
-      "Id": "36a1ad87-fa57-4dec-a5f3-0efd2ab66ddd",
-      "Address": "186 Tremont Street",
-      "Zip": "02111",
-      "Primary": true
-    }
+    "Id": "50123b78-54ee-47d4-b701-96fa4b0f894b",
+    "Name": "bpm'online"
+  },
+  "BusinessAddress": {
+    "AddressType": {
+      "Id": "fb7a3f6a-f36b-1410-6f81-1c6f65e50343",
+      "Name": "Business"
+    },
+    "Country": {
+      "Id": "a470b005-e8bb-df11-b00f-001d60e938c6",
+      "Name": "Ukraine"
+    },
+    "Region": {
+      "Id": "90edc2ee-07dd-df11-971b-001d60e938c6",
+      "Name": "Kiev Oblast"
+    },
+    "City": {
+      "Id": "1d0b6b13-e8bb-df11-b00f-001d60e938c6",
+      "Name": "Kyiv"
+    },
+    "Contact": {
+      "Id": "3a1fa718-08e4-4c36-9cce-1b6c982c4e73",
+      "Name": "Roman Ruslanovych Simuta"
+    },
+    "Id": "141b98e8-2891-4202-b2c4-7f232c040dfa",
+    "Address": "115a, Libanovskoho av.",
+    "Zip": "03118",
+    "Primary": true
   }
+};

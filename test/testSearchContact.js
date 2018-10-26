@@ -10,7 +10,7 @@ describe("contact search", () => {
 
     const localBundle = { ...bundle };
     localBundle.inputData = {
-        contactName: "ZapierContact"
+        contactName: "Zapier Test Contact"
     };
     appTester(App.searches.contact.operation.perform, localBundle)
       .then((contacts) => {
@@ -18,7 +18,7 @@ describe("contact search", () => {
         should(contacts).be.instanceof(Array);
         should(contacts.length).be.above(0);
         contacts.forEach(element => {
-            should(element.Name).eql("ZapierContact");
+            should(element.Name).eql("Zapier Test Contact");
         });
         done();
       })
