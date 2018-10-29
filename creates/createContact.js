@@ -1,6 +1,6 @@
 
 const sample = require("../samples/sampleContact");
-const utils = require("../utils/Utilities");
+const utils = require("../common/Utilities");
 
 const createContact = (z, bundle) => {
     let contact = {
@@ -81,10 +81,10 @@ module.exports = {
                 key: 'accountId',
                 label: 'Account Id'
             },
-            { 
-                key: 'accountName',
-                label: "Account Name (if you don't have Account Id)"
-            },
+            // { 
+            //     key: 'accountName',
+            //     label: "Account Name (if you don't have Account Id)"
+            // },
             
         ],
         perform: createContact,

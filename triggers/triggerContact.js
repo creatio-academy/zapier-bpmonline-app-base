@@ -1,6 +1,7 @@
 const sample = require("../samples/sampleContact");
 const fs = require("fs");
-const utils = require("../utils/Utilities");
+
+const contactsCommon = require("../common/Contacts");
 
 async function saveToJson (object, filename) {
     const json = JSON.stringify(object, null, 2);
@@ -9,42 +10,6 @@ async function saveToJson (object, filename) {
     });
 }
 
-const getContactAddressesByType = (z, bundle, contactId, addressTypeId) => {
-
-
-    const url = '{{bundle.authData.bpmonlineurl}}/0/ServiceModel/EntityDataService.svc/ContactAddressCollection?' +
-        "$select=Id,Address,Zip,Primary,Contact/Id,Contact/Name,Country/Id,Country/Name," +
-        "Region/Id,Region/Name,City/Id,City/Name,AddressType/Id,AddressType/Name" +
-        "&$expand=Contact,Country,Region,City,AddressType" +
-        "&$filter=" +
-        "Contact/Id eq guid'" + contactId + "' and " +
-        "AddressType/Id eq guid'" + addressTypeId + "'";
-
-    const promise = z.request({
-        method: 'GET',
-        url: url,
-    });
-
-    return promise
-        .then(
-            response => {
-                let results = JSON.parse(response.content).d.results;
-                // todo: make dummy address object
-                let result =utils. dummyAddress;
-                if (results.length > 0) {
-                    result = results[0];
-                    // todo: think about __metadata
-                    delete result.__metadata;
-                    delete result.AddressType.__metadata;
-                    delete result.Country.__metadata;
-                    delete result.City.__metadata;
-                    delete result.Region.__metadata;
-                    delete result.Contact.__metadata;
-                }
-                return result;
-            }
-        )
-}
 
 const getContacts = (z, bundle) => {
 
@@ -85,7 +50,7 @@ async function triggerContact(z, bundle) {
     let len = contacts.length;
     for (let i = 0; i < len ; i++){
         let addressTypeId = "fb7a3f6a-f36b-1410-6f81-1c6f65e50343"; //business
-        let address =  await getContactAddressesByType(z, bundle, contacts[i].id, addressTypeId);
+        let address =  await contactsCommon.getContactAddressesByType(z, bundle, contacts[i].id, addressTypeId);
         contacts[i].BusinessAddress = address;
     }
     await saveToJson(contacts, "c:\\sample.json");
