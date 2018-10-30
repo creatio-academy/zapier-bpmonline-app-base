@@ -1,7 +1,17 @@
+const fs = require("fs");
 
 function isNullOrWhitespace(input){
     return !input || !input.trim();
 }
+
+
+async function saveToJson (object, filename) {
+    const json = JSON.stringify(object, null, 2);
+    await fs.writeFile(filename, json, "utf-8",(err)=>{
+        if (err) console.log(err);
+    });
+}
+
 
 const dummyAddress = {
     Id : "",
@@ -32,5 +42,6 @@ const dummyAddress = {
 
 module.exports = {
     isNullOrWhitespace: isNullOrWhitespace,
-    dummyAddress: dummyAddress
+    dummyAddress: dummyAddress,
+    saveToJson: saveToJson
 };

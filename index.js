@@ -4,6 +4,11 @@ const contactTrigger = require ('./triggers/triggerContact');
 const contactCreate = require('./creates/createContact');
 const contactSearch = require('./searches/searchContact');
 
+const accountTrigger = require ('./triggers/triggerAccount');
+const accountSearch = require('./searches/searchAccount');
+const accountCreate = require('./creates/createAccount');
+
+
 const addAuthorizationToHeader = (request, z, bundle) => {
   // TODO: Read session cookie, add useForceSession header
   request.headers['Content-Type'] = 'application/json';
@@ -39,16 +44,19 @@ const App = {
   // If you want your trigger to show up, you better include it here!
   triggers: {
     [contactTrigger.key]:contactTrigger,
+    [accountTrigger.key]:accountTrigger,
   },
 
   // If you want your searches to show up, you better include it here!
   searches: {
     [contactSearch.key]: contactSearch,
+    [accountSearch.key]: accountSearch,
   },
 
   // If you want your creates to show up, you better include it here!
   creates: {
     [contactCreate.key]:contactCreate,
+    [accountCreate.key]:accountCreate,
   }
 };
 

@@ -8,9 +8,12 @@
   "license": "BSD-3-Clause",
   "main": "index.js",
   "scripts": {
-    "test2": "mocha test/testTriggerContact.js",
-    "test1": "mocha test/testCreateContact.js",
-    "test3": "mocha test/testSearchContact.js",
+    "test1": "mocha test/contact/testTriggerContact.js",
+    "test2": "mocha test/contact/testCreateContact.js",
+    "test3": "mocha test/contact/testSearchContact.js",
+    "test4": "mocha test/account/testTriggerAccount.js",
+    "test5": "mocha test/account/testSearchAccount.js",
+    "test6": "mocha test/account/testCreateAccount.js",
     "test": "mocha --recursive"
   },
   "engines": {

@@ -1,15 +1,7 @@
 const sample = require("../samples/sampleContact");
-const fs = require("fs");
+const utils = require("../common/Utilities");
 
 const contactsCommon = require("../common/Contacts");
-
-async function saveToJson (object, filename) {
-    const json = JSON.stringify(object, null, 2);
-    await fs.writeFile(filename, json, "utf-8",(err)=>{
-        if (err) console.log(err);
-    });
-}
-
 
 const getContacts = (z, bundle) => {
 
@@ -27,7 +19,7 @@ const getContacts = (z, bundle) => {
         .then(
             response => {
                 var results = JSON.parse(response.content).d.results;
-                // Got error with "Id" fields. Have to rename them.
+                // Got error with "Id" fields. Had to rename them.
                 // see https://zapier.com/developer/documentation/v2/app-checks-reference/#ZDE009
                 results = results.map(function (contact) {
                     contact.id = contact.Id;
@@ -53,7 +45,7 @@ async function triggerContact(z, bundle) {
         let address =  await contactsCommon.getContactAddressesByType(z, bundle, contacts[i].id, addressTypeId);
         contacts[i].BusinessAddress = address;
     }
-    await saveToJson(contacts, "c:\\sample.json");
+    // await utils.saveToJson(contacts, "c:\\sample.json");
     return contacts;
 };
 

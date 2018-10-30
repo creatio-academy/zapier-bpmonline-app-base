@@ -1,5 +1,5 @@
-const App = require('..');
-const bundle = require('./authcommon');
+const App = require('../../index');
+const bundle = require('../authcommon');
 const should = require('should');
 const zapier = require('zapier-platform-core');
 
@@ -7,7 +7,7 @@ const appTester = zapier.createAppTester(App);
 
 
 
-describe("contact trigger", () => {
+describe("Contact trigger", () => {
   
   it('should get contacts array', function(done){
     // important!!! test may fall with time restriction.

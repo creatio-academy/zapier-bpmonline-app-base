@@ -1,11 +1,11 @@
-const App = require('..');
-const bundle = require('./authcommon');
+const App = require('../../index');
+const bundle = require('../authcommon');
 const should = require('should');
 const zapier = require('zapier-platform-core');
 
 const appTester = zapier.createAppTester(App);
 
-describe("contact search", () => {
+describe("Contact search", () => {
   it('should get array of contacts with specified name', (done) => {
 
     const localBundle = { ...bundle };

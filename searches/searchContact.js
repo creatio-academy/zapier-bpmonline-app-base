@@ -66,8 +66,8 @@ async function searchContacts(z, bundle) {
         let address =  await contactsCommon.getContactAddressesByType(z, bundle, contacts[i].id, addressTypeId);
         contacts[i].BusinessAddress = address;
     }
-    z.console.log("searchContacts results");
-    z.console.log(contacts);
+    // z.console.log("searchContacts results");
+    // z.console.log(contacts);
     return contacts;
 };
 

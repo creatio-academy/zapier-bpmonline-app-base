@@ -1,12 +1,12 @@
-const App = require('..');
-const bundle = require('./authcommon');
+const App = require('../../index');
+const bundle = require('../authcommon');
 const should = require('should');
 const zapier = require('zapier-platform-core');
 
 const appTester = zapier.createAppTester(App);
 
 
-describe("contact create", () => {
+describe("Contact create", () => {
 
     it('should create contact', (done) => {
 
