@@ -63,8 +63,8 @@ module.exports = {
     noun: 'Account',
 
     display: {
-        label: 'Find Accounts',
-        description: "Search for bpm'online accounts."
+        label: 'Find Account',
+        description: "Find a bpm'online account."
     },
     operation: {
         inputFields: [

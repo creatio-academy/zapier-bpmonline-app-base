@@ -30,7 +30,7 @@ module.exports = {
 
     display: {
         label: 'Create Account',
-        description: "Adds new account to bpm'online."
+        description: "Add new account to bpm'online."
     },
 
     operation: {

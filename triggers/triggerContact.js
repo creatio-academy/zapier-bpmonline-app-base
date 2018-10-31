@@ -55,13 +55,13 @@ module.exports = {
 
     display: {
         label: 'Get New Contact',
-        description: 'Triggers on a contact creation.'
+        description: 'Triggers when contact added.'
     },
 
     operation: {
         inputFields: [
             //todo: Add filter by contact address type
-            { key: 'filter', required: false, label: 'Filter', choices: { all: 'all' }, helpText: 'Default is "all"' }
+            // { key: 'filter', required: false, label: 'Filter', choices: { all: 'all' }, helpText: 'Default is "all"' }
         ],
         perform: triggerContact,
         sample: sample

@@ -1,8 +1,9 @@
 
 const sample = require("../samples/sampleContact");
 const utils = require("../common/Utilities");
+const accountsCommon = require('../common/Accounts')
 
-const createContact = (z, bundle) => {
+async function createContact (z, bundle) {
     let contact = {
         Name: bundle.inputData.fullContactName,
         JobTitle: bundle.inputData.jobTitle,
@@ -12,17 +13,25 @@ const createContact = (z, bundle) => {
         Notes: bundle.inputData.notes,
     };
 
+    let accountName = bundle.inputData.accountName;
     let accountId = bundle.inputData.accountId;
     if (accountId === "00000000-0000-0000-0000-000000000000"){
         accountId = "";
     }
-    let accountName = bundle.inputData.accountName;
     if (!utils.isNullOrWhitespace(accountId)){
         contact.AccountId = accountId;
     }
     else if (!utils.isNullOrWhitespace(accountName)) {
-        // todo: find account id by name
-        //console.log(accountName);
+        var account = await accountsCommon.getAccountByName(z,bundle,accountName);
+        if (account && account.id){
+            contact.AccountId = account.id;
+        }
+        else {
+            newAccount = await accountsCommon.createAccountByName(z,bundle,accountName);
+            if (newAccount && newAccount.Id){
+                contact.AccountId = newAccount.Id;
+            }
+        }
     }
 
     const responsePromise = z.request({
@@ -47,14 +56,15 @@ module.exports = {
 
     display: {
         label: 'Create Contact',
-        description: "Adds new contact to bpm'online."
+        description: "Add new contact to bpm'online."
     },
 
     operation: {
         inputFields: [
             { 
                 key: 'fullContactName',
-                label: 'Full Name ([Given name] [Middle name] [Surname])',
+                label: 'Full Name',
+                helpText: 'Consists of given name, middle name and surname.',
                 required: true
             },
             { 
@@ -81,15 +91,14 @@ module.exports = {
                 key: 'accountId',
                 label: 'Account Id'
             },
-            // { 
-            //     key: 'accountName',
-            //     label: "Account Name (if you don't have Account Id)"
-            // },
+            { 
+                key: 'accountName',
+                label: "Account Name",
+                helpText: 'Use account name, if you do not know account Id. If account does not exist, it will be created.',
+            },
             
         ],
         perform: createContact,
-
-        // todo: contact example
         sample:sample
     }
 };

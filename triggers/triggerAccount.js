@@ -49,13 +49,13 @@ module.exports = {
 
     display: {
         label: 'Get New Account',
-        description: 'Triggers on a account creation.'
+        description: 'Triggers when account added.'
     },
 
     operation: {
         inputFields: [
             //todo: Add filter by contact address type
-            { key: 'filter', required: false, label: 'Filter', choices: { all: 'all' }, helpText: 'Default is "all"' }
+            // { key: 'filter', required: false, label: 'Filter', choices: { all: 'all' }, helpText: 'Default is "all"' }
         ],
         perform: triggerAccount,
         sample: sample

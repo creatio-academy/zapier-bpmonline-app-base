@@ -76,8 +76,8 @@ module.exports = {
     noun: 'Contact',
 
     display: {
-        label: 'Find Contacts',
-        description: "Search for bpm'online contacts."
+        label: 'Find Contact',
+        description: "Find a bpm'online contact."
     },
     operation: {
         inputFields: [
@@ -97,8 +97,8 @@ module.exports = {
             {
                 key: 'fullContactName',
                 type: 'string',
-                label: 'Full Name ([Given name] [Middle name] [Surname])',
-                helpText: "Full name of the contact in the bpm'online."
+                label: 'Full Name',
+                helpText: "helpText: 'Consists of given name, middle name and surname."
             },
             {
                 key: 'email',
