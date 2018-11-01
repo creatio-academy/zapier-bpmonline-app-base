@@ -23,9 +23,22 @@ module.exports = {
   test: test,
   fields: [
     //todo: add app url here
-    { key: 'username', label: 'Username', required: true, type: 'string' },
-    { key: 'password', label: 'Password', required: true, type: 'password' },
-    { key: 'bpmonlineurl', label: "Bpm'online URL", required: true, type: 'string' }
+    {
+      key: 'username',
+      label: 'Username',
+      required: true, type: 'string'
+    },
+    { 
+      key: 'password',
+      label: 'Password',
+      required: true, type: 'password'
+    },
+    { 
+      key: 'bpmonlineurl',
+      label: "Bpm'online URL",
+      required: true, type: 'string',
+      helpText: 'Examples: https://myapp.bpmonline.com or http://myapp.bpmonline.com'
+    }
   ],
   // assuming "username" is a key returned from the test
   connectionLabel: '{{username}}'
