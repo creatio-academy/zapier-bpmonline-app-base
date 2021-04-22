@@ -35,9 +35,9 @@ module.exports = {
     },
     { 
       key: 'bpmonlineurl',
-      label: "Bpm'online URL",
+      label: "Creatio URL",
       required: true, type: 'string',
-      helpText: 'Examples: https://myapp.bpmonline.com or http://myapp.bpmonline.com'
+      helpText: 'Examples: https://myapp.creatio.com or http://myapp.creatio.com'
     }
   ],
   // assuming "username" is a key returned from the test
