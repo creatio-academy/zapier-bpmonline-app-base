@@ -1,7 +1,7 @@
 {
-  "name": "zapier-bpmonline",
+  "name": "zapier-creatio",
   "version": "1.0.0",
-  "description": "An application to integrate Zapier and bpm'online.",
+  "description": "An application to integrate Zapier and Creatio.",
   "repository": "https://github.com/simutaroman/zapier-bpmonline-app-base",
   "homepage": "https://www.bpmonline.com/",
   "author": "Roman Simuta <simutaroman@gmail.com>",
